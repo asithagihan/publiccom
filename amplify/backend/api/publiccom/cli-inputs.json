@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "publiccom",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/asitha/public-com/amplify/backend/api/publiccom/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authpubliccome5cc31ca"
+      }
+    ]
+  }
+}

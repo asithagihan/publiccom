@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-publiccom-dev-161815-authRole",
+      "UnauthRoleArn": "arn:aws:iam::152215121229:role/amplify-publiccom-dev-161815-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::152215121229:role/amplify-publiccom-dev-161815-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-publiccom-dev-161815-deployment",
+      "UnauthRoleName": "amplify-publiccom-dev-161815-unauthRole",
+      "StackName": "amplify-publiccom-dev-161815",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:152215121229:stack/amplify-publiccom-dev-161815/dd7b6fb0-d117-11ec-8781-02cbd700e1ac",
+      "AmplifyAppId": "d2er59sacrr19m"
+    },
+    "categories": {
+      "auth": {
+        "publiccome5cc31ca": {}
+      }
+    }
+  }
+}
