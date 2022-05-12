@@ -1,20 +1,26 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-publiccom-dev-64540-authRole",
-      "UnauthRoleArn": "arn:aws:iam::466960485094:role/amplify-publiccom-dev-64540-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::466960485094:role/amplify-publiccom-dev-64540-authRole",
-      "Region": "ap-southeast-1",
-      "DeploymentBucketName": "amplify-publiccom-dev-64540-deployment",
-      "UnauthRoleName": "amplify-publiccom-dev-64540-unauthRole",
-      "StackName": "amplify-publiccom-dev-64540",
-      "StackId": "arn:aws:cloudformation:ap-southeast-1:466960485094:stack/amplify-publiccom-dev-64540/0ad5ce50-d191-11ec-acaf-0ab85d354f0c",
-      "AmplifyAppId": "d2ati7chwwv5rr"
-    },
-    "categories": {
-      "auth": {
-        "publiccom6db6bf04": {}
-      }
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-publiccom-dev-64540-authRole",
+            "UnauthRoleArn": "arn:aws:iam::466960485094:role/amplify-publiccom-dev-64540-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::466960485094:role/amplify-publiccom-dev-64540-authRole",
+            "Region": "ap-southeast-1",
+            "DeploymentBucketName": "amplify-publiccom-dev-64540-deployment",
+            "UnauthRoleName": "amplify-publiccom-dev-64540-unauthRole",
+            "StackName": "amplify-publiccom-dev-64540",
+            "StackId": "arn:aws:cloudformation:ap-southeast-1:466960485094:stack/amplify-publiccom-dev-64540/0ad5ce50-d191-11ec-acaf-0ab85d354f0c",
+            "AmplifyAppId": "d2ati7chwwv5rr"
+        },
+        "categories": {
+            "auth": {
+                "publiccom6db6bf04": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d2ati7chwwv5rr",
+                    "type": "cicd"
+                }
+            }
+        }
     }
-  }
 }
