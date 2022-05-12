@@ -1,102 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      username
-      mediaId
-      media {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      verified
-      posts {
-        items {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          userPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      username
-      mediaId
-      media {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      verified
-      posts {
-        items {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          userPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      username
-      mediaId
-      media {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      verified
-      posts {
-        items {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          userPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createPost = /* GraphQL */ `
   mutation CreatePost(
     $input: CreatePostInput!
@@ -113,6 +17,7 @@ export const createPost = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -120,16 +25,38 @@ export const createPost = /* GraphQL */ `
         items {
           id
           content
-          userId
           createdAt
           updatedAt
           postCommentsId
+          owner
+        }
+        nextToken
+      }
+      ratings {
+        items {
+          id
+          value
+          createdAt
+          updatedAt
+          postRatingsId
+          owner
+        }
+        nextToken
+      }
+      media {
+        items {
+          id
+          url
+          createdAt
+          updatedAt
+          postMediaId
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
-      userPostsId
+      owner
     }
   }
 `;
@@ -149,6 +76,7 @@ export const updatePost = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -156,16 +84,38 @@ export const updatePost = /* GraphQL */ `
         items {
           id
           content
-          userId
           createdAt
           updatedAt
           postCommentsId
+          owner
+        }
+        nextToken
+      }
+      ratings {
+        items {
+          id
+          value
+          createdAt
+          updatedAt
+          postRatingsId
+          owner
+        }
+        nextToken
+      }
+      media {
+        items {
+          id
+          url
+          createdAt
+          updatedAt
+          postMediaId
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
-      userPostsId
+      owner
     }
   }
 `;
@@ -185,6 +135,7 @@ export const deletePost = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -192,16 +143,38 @@ export const deletePost = /* GraphQL */ `
         items {
           id
           content
-          userId
           createdAt
           updatedAt
           postCommentsId
+          owner
+        }
+        nextToken
+      }
+      ratings {
+        items {
+          id
+          value
+          createdAt
+          updatedAt
+          postRatingsId
+          owner
+        }
+        nextToken
+      }
+      media {
+        items {
+          id
+          url
+          createdAt
+          updatedAt
+          postMediaId
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
-      userPostsId
+      owner
     }
   }
 `;
@@ -215,6 +188,8 @@ export const createMedia = /* GraphQL */ `
       url
       createdAt
       updatedAt
+      postMediaId
+      owner
     }
   }
 `;
@@ -228,6 +203,8 @@ export const updateMedia = /* GraphQL */ `
       url
       createdAt
       updatedAt
+      postMediaId
+      owner
     }
   }
 `;
@@ -241,6 +218,8 @@ export const deleteMedia = /* GraphQL */ `
       url
       createdAt
       updatedAt
+      postMediaId
+      owner
     }
   }
 `;
@@ -259,11 +238,13 @@ export const createTag = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -282,11 +263,13 @@ export const updateTag = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -305,11 +288,13 @@ export const deleteTag = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -330,32 +315,21 @@ export const createComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
-        userPostsId
-      }
-      content
-      userId
-      user {
-        id
-        username
-        mediaId
-        media {
-          id
-          url
-          createdAt
-          updatedAt
+        ratings {
+          nextToken
         }
-        verified
-        posts {
+        media {
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
+      content
       createdAt
       updatedAt
       postCommentsId
+      owner
     }
   }
 `;
@@ -376,32 +350,21 @@ export const updateComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
-        userPostsId
-      }
-      content
-      userId
-      user {
-        id
-        username
-        mediaId
-        media {
-          id
-          url
-          createdAt
-          updatedAt
+        ratings {
+          nextToken
         }
-        verified
-        posts {
+        media {
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
+      content
       createdAt
       updatedAt
       postCommentsId
+      owner
     }
   }
 `;
@@ -422,32 +385,126 @@ export const deleteComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
-        userPostsId
-      }
-      content
-      userId
-      user {
-        id
-        username
-        mediaId
-        media {
-          id
-          url
-          createdAt
-          updatedAt
+        ratings {
+          nextToken
         }
-        verified
-        posts {
+        media {
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
+      content
       createdAt
       updatedAt
       postCommentsId
+      owner
+    }
+  }
+`;
+export const createRating = /* GraphQL */ `
+  mutation CreateRating(
+    $input: CreateRatingInput!
+    $condition: ModelRatingConditionInput
+  ) {
+    createRating(input: $input, condition: $condition) {
+      id
+      post {
+        id
+        title
+        description
+        tags {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      value
+      createdAt
+      updatedAt
+      postRatingsId
+      owner
+    }
+  }
+`;
+export const updateRating = /* GraphQL */ `
+  mutation UpdateRating(
+    $input: UpdateRatingInput!
+    $condition: ModelRatingConditionInput
+  ) {
+    updateRating(input: $input, condition: $condition) {
+      id
+      post {
+        id
+        title
+        description
+        tags {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      value
+      createdAt
+      updatedAt
+      postRatingsId
+      owner
+    }
+  }
+`;
+export const deleteRating = /* GraphQL */ `
+  mutation DeleteRating(
+    $input: DeleteRatingInput!
+    $condition: ModelRatingConditionInput
+  ) {
+    deleteRating(input: $input, condition: $condition) {
+      id
+      post {
+        id
+        title
+        description
+        tags {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      value
+      createdAt
+      updatedAt
+      postRatingsId
+      owner
     }
   }
 `;
@@ -470,9 +527,15 @@ export const createPostTags = /* GraphQL */ `
         comments {
           nextToken
         }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
         createdAt
         updatedAt
-        userPostsId
+        owner
       }
       tag {
         id
@@ -482,9 +545,11 @@ export const createPostTags = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        owner
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -507,9 +572,15 @@ export const updatePostTags = /* GraphQL */ `
         comments {
           nextToken
         }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
         createdAt
         updatedAt
-        userPostsId
+        owner
       }
       tag {
         id
@@ -519,9 +590,11 @@ export const updatePostTags = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        owner
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -544,9 +617,15 @@ export const deletePostTags = /* GraphQL */ `
         comments {
           nextToken
         }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
         createdAt
         updatedAt
-        userPostsId
+        owner
       }
       tag {
         id
@@ -556,9 +635,11 @@ export const deletePostTags = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        owner
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;

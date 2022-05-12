@@ -7,7 +7,9 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "auth": {
-        "publiccome5cc31ca": {
+        "publiccom6db6bf04": {
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",

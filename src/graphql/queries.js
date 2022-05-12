@@ -1,63 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      username
-      mediaId
-      media {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      verified
-      posts {
-        items {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          userPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        username
-        mediaId
-        media {
-          id
-          url
-          createdAt
-          updatedAt
-        }
-        verified
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
 export const getPost = /* GraphQL */ `
   query GetPost($id: ID!) {
     getPost(id: $id) {
@@ -71,6 +14,7 @@ export const getPost = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -78,16 +22,38 @@ export const getPost = /* GraphQL */ `
         items {
           id
           content
-          userId
           createdAt
           updatedAt
           postCommentsId
+          owner
+        }
+        nextToken
+      }
+      ratings {
+        items {
+          id
+          value
+          createdAt
+          updatedAt
+          postRatingsId
+          owner
+        }
+        nextToken
+      }
+      media {
+        items {
+          id
+          url
+          createdAt
+          updatedAt
+          postMediaId
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
-      userPostsId
+      owner
     }
   }
 `;
@@ -108,9 +74,15 @@ export const listPosts = /* GraphQL */ `
         comments {
           nextToken
         }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
         createdAt
         updatedAt
-        userPostsId
+        owner
       }
       nextToken
     }
@@ -123,6 +95,8 @@ export const getMedia = /* GraphQL */ `
       url
       createdAt
       updatedAt
+      postMediaId
+      owner
     }
   }
 `;
@@ -138,6 +112,8 @@ export const listMedia = /* GraphQL */ `
         url
         createdAt
         updatedAt
+        postMediaId
+        owner
       }
       nextToken
     }
@@ -155,11 +131,13 @@ export const getTag = /* GraphQL */ `
           tagID
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -178,6 +156,7 @@ export const listTags = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }
@@ -197,32 +176,21 @@ export const getComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
-        userPostsId
-      }
-      content
-      userId
-      user {
-        id
-        username
-        mediaId
-        media {
-          id
-          url
-          createdAt
-          updatedAt
+        ratings {
+          nextToken
         }
-        verified
-        posts {
+        media {
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
+      content
       createdAt
       updatedAt
       postCommentsId
+      owner
     }
   }
 `;
@@ -241,21 +209,72 @@ export const listComments = /* GraphQL */ `
           description
           createdAt
           updatedAt
-          userPostsId
+          owner
         }
         content
-        userId
-        user {
-          id
-          username
-          mediaId
-          verified
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
         postCommentsId
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getRating = /* GraphQL */ `
+  query GetRating($id: ID!) {
+    getRating(id: $id) {
+      id
+      post {
+        id
+        title
+        description
+        tags {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      value
+      createdAt
+      updatedAt
+      postRatingsId
+      owner
+    }
+  }
+`;
+export const listRatings = /* GraphQL */ `
+  query ListRatings(
+    $filter: ModelRatingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRatings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        post {
+          id
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        value
+        createdAt
+        updatedAt
+        postRatingsId
+        owner
       }
       nextToken
     }
@@ -277,9 +296,15 @@ export const getPostTags = /* GraphQL */ `
         comments {
           nextToken
         }
+        ratings {
+          nextToken
+        }
+        media {
+          nextToken
+        }
         createdAt
         updatedAt
-        userPostsId
+        owner
       }
       tag {
         id
@@ -289,9 +314,11 @@ export const getPostTags = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        owner
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -312,16 +339,18 @@ export const listPostTags = /* GraphQL */ `
           description
           createdAt
           updatedAt
-          userPostsId
+          owner
         }
         tag {
           id
           label
           createdAt
           updatedAt
+          owner
         }
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }
